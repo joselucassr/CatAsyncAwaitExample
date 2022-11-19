@@ -8,10 +8,22 @@ const fetchCat = async (element) => {
   element.src = URL.createObjectURL(blob);
 };
 
+const fetchCatThen = (element) => {
+  fetch('https://cataas.com/cat/cute?width=300')
+    .then((response) => response.blob())
+    .then((blob) => {
+      element.src = URL.createObjectURL(blob);
+    });
+};
+
 const asyncCats = () => {
-  fetchCat(catA);
-  fetchCat(catB);
-  fetchCat(catC);
+  // fetchCat(catA);
+  // fetchCat(catB);
+  // fetchCat(catC);
+
+  fetchCatThen(catA);
+  fetchCatThen(catB);
+  fetchCatThen(catC);
 };
 
 const syncCats = async () => {
